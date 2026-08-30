@@ -1,0 +1,55 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #172033;
+  background: #f6f7fb;
+}
+
+body {
+  width: 320px;
+  margin: 0;
+}
+
+.popup {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #65718a;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.url,
+.status {
+  margin: 8px 0 0;
+  color: #65718a;
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 14px;
+  color: #ffffff;
+  background: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #aab3c5;
+  cursor: not-allowed;
+}

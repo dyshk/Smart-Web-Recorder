@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智能听力录音机</title>
+    <link rel="stylesheet" href="recorder.css">
+  </head>
+  <body>
+    <main class="recorder">
+      <header class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="mic-head"></span>
+          <span class="mic-stem"></span>
+          <span class="clip-corner"></span>
+        </div>
+        <h1>智能录音机</h1>
+      </header>
+
+      <section class="source">
+        <label>
+          网址：
+          <input id="pageUrl" type="text" readonly>
+        </label>
+        <label>
+          标题：
+          <input id="pageTitle" type="text" readonly>
+        </label>
+        <label class="check-row">
+          <input id="muteMonitor" type="checkbox">
+          静音网页回放
+        </label>
+      </section>
+
+      <section class="status-row">
+        <span id="status">就绪</span>
+        <span id="clock">00:00.0</span>
+      </section>
+
+      <section class="wave-panel">
+        <div class="meter" aria-label="音量">
+          <span id="levelBar"></span>
+        </div>
+        <canvas id="timeline" width="900" height="190"></canvas>
+        <div class="time-row">
+          <span id="clipStartText">起点 00:00.0</span>
+          <span id="clipEndText">终点 00:00.0</span>
+        </div>
+      </section>
+
+      <section class="primary-actions">
+        <button id="startButton" type="button">开始录制</button>
+        <button id="stopButton" type="button" disabled>停止</button>
+        <button id="discardButton" type="button" disabled>丢弃</button>
+        <button id="previewButton" type="button" disabled>试听片段</button>
+      </section>
+
+      <audio id="previewAudio" controls></audio>
+
+      <section class="save-row">
+        <label>
+          格式：
+          <select id="formatSelect">
+            <option value="webm">WEBM 音频</option>
+            <option value="mp3">MP3 音频</option>
+            <option value="wav">WAV 音频</option>
+          </select>
+        </label>
+        <button id="downloadClipButton" type="button" disabled>保存片段</button>
+        <button id="downloadFullButton" type="button" disabled>保存完整录音</button>
+      </section>
+    </main>
+
+    <script src="recorder.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "智能听力录音机",
+  "description": "录制当前网页标签页声音，拖动选择听力片段并保存。",
+  "version": "0.1.0",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabCapture",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "智能听力录音机",
+    "default_popup": "popup.html"
+  }
+}
