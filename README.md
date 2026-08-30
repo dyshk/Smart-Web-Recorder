@@ -2,9 +2,9 @@
 
 这是一个 Edge/Chromium 扩展，用来录制当前网页标签页的声音，并把音频片段保存为 WAV 文件。
 <p align="center">
-  <img width="300"  alt="16394745a0d1e6244e33cf89f4a120c2" src="https://github.com/user-attachments/assets/5a216bc7-673a-4c30-9b5d-7bb32e39d3f2" />
-  <img width="300"  alt="d360f20df7590274a05a37a6a0f60da0" src="https://github.com/user-attachments/assets/f1035692-49bc-40e8-861e-e0d25186fd5c" />
-  <img width="300"  alt="017a133f2e4f5e230a281561f5d9e6e2" src="https://github.com/user-attachments/assets/1de4e69a-a123-4af1-9382-86a811bc54ae" />
+  <img width="200"  alt="16394745a0d1e6244e33cf89f4a120c2" src="https://github.com/user-attachments/assets/5a216bc7-673a-4c30-9b5d-7bb32e39d3f2" />
+  <img width="200"  alt="d360f20df7590274a05a37a6a0f60da0" src="https://github.com/user-attachments/assets/f1035692-49bc-40e8-861e-e0d25186fd5c" />
+  <img width="200"  alt="017a133f2e4f5e230a281561f5d9e6e2" src="https://github.com/user-attachments/assets/1de4e69a-a123-4af1-9382-86a811bc54ae" />
 </p>
 
 
