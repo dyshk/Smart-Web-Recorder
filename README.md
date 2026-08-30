@@ -1,8 +1,12 @@
 # 智能听力录音机
 
 这是一个 Edge/Chromium 扩展，用来录制当前网页标签页的声音，并把音频片段保存为 WAV 文件。
-| <img width="300" src="https://github.com/user-attachments/assets/9c2adfac-9387-4337-9b1f-f21e6e568150"> | <img width="300" src="https://github.com/user-attachments/assets/4d12f98b-16f9-4f30-b556-bee42e86e2f3"> | <img width="300" src="https://github.com/user-attachments/assets/cc71ca12-b08c-4824-8df7-838a0b8cf111"> |
-|---|---|---|
+<p align="center">
+  <img width="300" src="https://github.com/user-attachments/assets/9c2adfac-9387-4337-9b1f-f21e6e568150">
+  <img width="300" src="https://github.com/user-attachments/assets/4d12f98b-16f9-4f30-b556-bee42e86e2f3">
+  <img width="300" src="https://github.com/user-attachments/assets/cc71ca12-b08c-4824-8df7-838a0b8cf111">
+</p>
+
 
 ## 在 Microsoft Edge 中安装
 点击Code——Download ZIP——解压缩
