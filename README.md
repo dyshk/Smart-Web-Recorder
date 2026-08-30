@@ -13,7 +13,8 @@
 1. 打开浏览器扩展。
 2. 开启“开发人员模式”。
 3. 点击“加载解压缩的扩展”。
-4. 选择此解压后的文件夹：`edge-audio-capture-extension`。
+4. 选择解压后的文件夹。
+<img width="913" height="514" alt="image" src="https://github.com/user-attachments/assets/deefa9f3-b5a2-414d-bf94-154553939d0c" />
 
 ## 使用方法
 
