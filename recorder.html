@@ -8,6 +8,7 @@
   </head>
   <body>
     <main class="recorder">
+      <!-- ===== 顶部标题栏 ===== -->
       <header class="brand">
         <div class="brand-mark" aria-hidden="true">
           <span class="mic-head"></span>
@@ -15,8 +16,24 @@
           <span class="clip-corner"></span>
         </div>
         <h1>智能录音机</h1>
+
+        <!--
+          固定窗口置顶按钮
+          点击后窗口将持续保持在浏览器最前面（通过监听焦点变化自动重聚焦实现）
+          再次点击取消固定
+        -->
+        <button id="pinButton" class="pin-button" type="button"
+                title="固定窗口置顶" aria-label="固定窗口置顶" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="17" x2="12" y2="22"/>
+            <path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/>
+          </svg>
+        </button>
       </header>
 
+      <!-- ===== 网页信息区 ===== -->
       <section class="source">
         <label>
           网址：
@@ -32,22 +49,28 @@
         </label>
       </section>
 
+      <!-- ===== 状态与计时区 ===== -->
       <section class="status-row">
         <span id="status">就绪</span>
         <span id="clock">00:00.0</span>
       </section>
 
+      <!--
+        ===== 波形面板 =====
+        画布高度从 190 缩小到 120，配合渐变色与间距优化使波形更精致美观
+      -->
       <section class="wave-panel">
         <div class="meter" aria-label="音量">
           <span id="levelBar"></span>
         </div>
-        <canvas id="timeline" width="900" height="190"></canvas>
+        <canvas id="timeline" width="900" height="120"></canvas>
         <div class="time-row">
           <span id="clipStartText">起点 00:00.0</span>
           <span id="clipEndText">终点 00:00.0</span>
         </div>
       </section>
 
+      <!-- ===== 主操作按钮区 ===== -->
       <section class="primary-actions">
         <button id="startButton" type="button">开始录制</button>
         <button id="stopButton" type="button" disabled>停止</button>
@@ -57,6 +80,7 @@
 
       <audio id="previewAudio" controls></audio>
 
+      <!-- ===== 保存区 ===== -->
       <section class="save-row">
         <label>
           格式：
