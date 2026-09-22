@@ -1,21 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "智能听力录音机",
-  "description": "录制当前网页标签页声音，拖动选择听力片段并保存。支持固定窗口置顶、波形可视化。",
-  "version": "1.0.0",
+  "name": "智能网页探测器",
+  "short_name": "探测器",
+  "description": "Record tab audio & one-click detect/download all media files (audio, video, docs, images). 录制网页声音、一键探测下载所有媒体文件（音频、视频、文档、图片）。",
+  "version": "2.0.0",
   "minimum_chrome_version": "88",
   "permissions": [
     "activeTab",
     "storage",
     "tabCapture",
     "tabs",
-    "windows"
+    "windows",
+    "downloads",
+    "scripting"
   ],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "智能听力录音机",
+    "default_title": "智能网页探测器",
     "default_popup": "popup.html"
   },
   "browser_specific_settings": {
