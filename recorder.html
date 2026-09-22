@@ -3,27 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>智能听力录音机</title>
+    <title>Smart Web Detector / 智能网页探测器</title>
     <link rel="stylesheet" href="recorder.css">
   </head>
   <body>
     <main class="recorder">
-      <!-- ===== 顶部标题栏 ===== -->
+      <!-- ===== Header / 顶部标题栏 ===== -->
       <header class="brand">
         <div class="brand-mark" aria-hidden="true">
           <span class="mic-head"></span>
           <span class="mic-stem"></span>
           <span class="clip-corner"></span>
         </div>
-        <h1>智能录音机</h1>
+        <h1>智能网页探测器</h1>
 
-        <!--
-          固定窗口置顶按钮
-          点击后窗口将持续保持在浏览器最前面（通过监听焦点变化自动重聚焦实现）
-          再次点击取消固定
-        -->
+        <!-- Pin window on top / 固定窗口置顶按钮 -->
         <button id="pinButton" class="pin-button" type="button"
-                title="固定窗口置顶" aria-label="固定窗口置顶" aria-pressed="false">
+                title="固定窗口置顶 / Pin on top" aria-label="Pin on top" aria-pressed="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round">
@@ -33,34 +29,34 @@
         </button>
       </header>
 
-      <!-- ===== 网页信息区 ===== -->
+      <!-- ===== Tab Info / 网页信息区 ===== -->
       <section class="source">
         <label>
-          网址：
+          <span>网址</span>
           <input id="pageUrl" type="text" readonly>
         </label>
         <label>
-          标题：
+          <span>标题</span>
           <input id="pageTitle" type="text" readonly>
         </label>
         <label class="check-row">
           <input id="muteMonitor" type="checkbox">
-          静音网页回放
+          <span>静音网页回放 / Mute playback</span>
         </label>
       </section>
 
-      <!-- ===== 状态与计时区 ===== -->
+      <!-- ===== Recording Section / 智能网页录音区 ===== -->
+      <div class="section-title">智能网页录音 / Web Recording</div>
+
+      <!-- ===== Status & Timer / 状态与计时区 ===== -->
       <section class="status-row">
-        <span id="status">就绪</span>
+        <span id="status">就绪 / Ready</span>
         <span id="clock">00:00.0</span>
       </section>
 
-      <!--
-        ===== 波形面板 =====
-        画布高度从 190 缩小到 120，配合渐变色与间距优化使波形更精致美观
-      -->
+      <!-- ===== Waveform Panel / 波形面板 ===== -->
       <section class="wave-panel">
-        <div class="meter" aria-label="音量">
+        <div class="meter" aria-label="Volume / 音量">
           <span id="levelBar"></span>
         </div>
         <canvas id="timeline" width="900" height="120"></canvas>
@@ -70,29 +66,61 @@
         </div>
       </section>
 
-      <!-- ===== 主操作按钮区 ===== -->
+      <!-- ===== Primary Actions / 主操作按钮区 ===== -->
       <section class="primary-actions">
-        <button id="startButton" type="button">开始录制</button>
-        <button id="stopButton" type="button" disabled>停止</button>
-        <button id="discardButton" type="button" disabled>丢弃</button>
-        <button id="previewButton" type="button" disabled>试听片段</button>
+        <button id="startButton" type="button">开始录制 / Record</button>
+        <button id="stopButton" type="button" disabled>停止 / Stop</button>
+        <button id="discardButton" type="button" disabled>丢弃 / Discard</button>
+        <button id="previewButton" type="button" disabled>试听 / Preview</button>
       </section>
 
       <audio id="previewAudio" controls></audio>
 
-      <!-- ===== 保存区 ===== -->
+      <!-- ===== Save Section / 保存区 ===== -->
       <section class="save-row">
         <label>
-          格式：
+          <span>格式</span>
           <select id="formatSelect">
-            <option value="webm">WEBM 音频</option>
-            <option value="mp3">MP3 音频</option>
-            <option value="wav">WAV 音频</option>
+            <option value="webm">WEBM</option>
+            <option value="mp3">MP3</option>
+            <option value="wav">WAV</option>
           </select>
         </label>
-        <button id="downloadClipButton" type="button" disabled>保存片段</button>
-        <button id="downloadFullButton" type="button" disabled>保存完整录音</button>
+        <button id="downloadClipButton" type="button" disabled>保存片段 / Save Clip</button>
+        <button id="downloadFullButton" type="button" disabled>保存完整录音 / Save Full</button>
       </section>
+
+      <!--
+        ===== Quick Download Section / 一键探测下载区（v2.0.0 新增）=====
+        Detects ALL downloadable media on the page — audio, video, documents,
+        archives, images — and downloads the source files directly.
+        检测页面中所有可下载的媒体——音频、视频、文档、压缩包、图片——
+        直接下载源文件，不是录音。
+
+        When audio cannot be downloaded (MSE streams, no audio found),
+        video and other downloadable files are offered instead.
+        当音频无法下载时（MSE 流媒体、未找到音频），
+        自动改为提供视频和其他可下载文件。
+      -->
+      <section class="quick-download">
+        <div class="section-title">一键探测下载 / Quick Download</div>
+
+        <div class="quick-download-actions">
+          <button id="detectMediaButton" type="button" class="detect-btn">
+            🔍 探测媒体 / Detect Media
+          </button>
+          <button id="downloadAllButton" type="button" class="download-all-btn" disabled>
+            ⬇ 一键下载全部 / Download All
+          </button>
+        </div>
+
+        <!-- Detected media list (populated by JS) / 检测到的媒体列表（由 JS 填充）-->
+        <div id="mediaList" class="media-list"></div>
+
+        <!-- Status text / 状态文字 -->
+        <div id="quickStatus" class="quick-status"></div>
+      </section>
+
     </main>
 
     <script src="recorder.js"></script>
