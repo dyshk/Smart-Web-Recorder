@@ -1,19 +1,20 @@
 /* ==========================================================================
-   智能听力录音机 — 录音窗口样式表
+   Smart Web Detector / 智能网页探测器 — Stylesheet v2.0.0
    ==========================================================================
-   目录：
-     1. 全局变量与重置
-     2. 主容器与标题栏
-     3. 固定窗口置顶按钮（新增）
-     4. 品牌图标
-     5. 网页信息区
-     6. 状态行与波形面板
-     7. 按钮区
-     8. 试听音频
-     9. 响应式适配
+   目录 / Table of Contents:
+     1. Global variables & reset / 全局变量与重置
+     2. Main container & header / 主容器与标题栏
+     3. Pin button / 固定窗口按钮
+     4. Brand icon / 品牌图标
+     5. Tab info section / 网页信息区
+     6. Status & waveform / 状态行与波形面板
+     7. Buttons / 按钮区
+     8. Preview audio / 试听音频
+     9. Quick download section (v2.0.0) / 一键探测下载区
+     10. Responsive / 响应式适配
    ========================================================================== */
 
-/* ===== 1. 全局变量与重置 ===== */
+/* ===== 1. Global variables & reset ===== */
 :root {
   color-scheme: light;
   font-family: "Microsoft YaHei", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -21,9 +22,7 @@
   background: #f0eee9;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   min-width: 480px;
@@ -31,31 +30,20 @@ body {
   background: #f0eee9;
 }
 
-/* ===== 2. 主容器与标题栏 ===== */
+/* ===== 2. Main container & header ===== */
 .recorder {
   min-height: 100vh;
   padding: 22px 24px 26px;
   background: linear-gradient(155deg, #ff764d 0%, #ff8457 48%, #ff6d49 100%);
 }
 
-/*
-  标题栏布局
-  使用 flex 布局，将图标、标题、固定按钮从左到右排列
-  margin-left:auto 将固定按钮推到最右侧
-*/
 .brand {
   display: flex;
   gap: 14px;
   align-items: center;
 }
 
-/* ===== 3. 固定窗口置顶按钮（新增） ===== */
-/*
-  固定按钮样式
-  - 默认状态：半透明白底，悬停时变亮
-  - 激活状态(.active)：金色高亮 + 轻微旋转，表示已固定
-  - 过渡动画使状态切换更平滑
-*/
+/* ===== 3. Pin button ===== */
 .pin-button {
   margin-left: auto;
   display: flex;
@@ -72,16 +60,9 @@ body {
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.pin-button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.08);
-}
+.pin-button:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.08); }
+.pin-button:active { transform: scale(0.95); }
 
-.pin-button:active {
-  transform: scale(0.95);
-}
-
-/* 激活状态：窗口已固定置顶 */
 .pin-button.active {
   color: #fff15a;
   background: rgba(255, 241, 90, 0.22);
@@ -90,11 +71,9 @@ body {
   transform: rotate(-12deg);
 }
 
-.pin-button.active:hover {
-  background: rgba(255, 241, 90, 0.35);
-}
+.pin-button.active:hover { background: rgba(255, 241, 90, 0.35); }
 
-/* ===== 4. 品牌图标 ===== */
+/* ===== 4. Brand icon ===== */
 .brand-mark {
   position: relative;
   width: 58px;
@@ -108,19 +87,15 @@ body {
 
 .mic-head {
   position: absolute;
-  left: 20px;
-  top: 10px;
-  width: 18px;
-  height: 28px;
+  left: 20px; top: 10px;
+  width: 18px; height: 28px;
   border: 3px solid #ffffff;
   border-radius: 999px;
 }
 
 .mic-head::after {
   position: absolute;
-  left: 4px;
-  right: 4px;
-  top: 8px;
+  left: 4px; right: 4px; top: 8px;
   height: 3px;
   border-radius: 999px;
   background: #ffffff;
@@ -129,20 +104,16 @@ body {
 
 .mic-stem {
   position: absolute;
-  left: 27px;
-  top: 38px;
-  width: 4px;
-  height: 12px;
+  left: 27px; top: 38px;
+  width: 4px; height: 12px;
   border-radius: 999px;
   background: #ffffff;
 }
 
 .mic-stem::after {
   position: absolute;
-  left: -9px;
-  top: 9px;
-  width: 22px;
-  height: 4px;
+  left: -9px; top: 9px;
+  width: 22px; height: 4px;
   border-radius: 999px;
   background: #ffffff;
   content: "";
@@ -150,40 +121,19 @@ body {
 
 .clip-corner {
   position: absolute;
-  right: 7px;
-  top: 7px;
-  width: 10px;
-  height: 10px;
+  right: 7px; top: 7px;
+  width: 10px; height: 10px;
   border-top: 3px solid #fff15a;
   border-right: 3px solid #fff15a;
 }
 
-/* Legacy fallback if an old page keeps the previous markup cached. */
-.record-badge {
-  display: none;
-  width: 58px;
-  height: 58px;
-  place-items: center;
-  border: 3px solid #ffffff;
-  border-radius: 50%;
-  background: #e23632;
-  box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.2);
-  font-size: 14px;
-  font-weight: 900;
-  transform: rotate(-18deg);
-}
-
-/* ===== 5. 网页信息区 ===== */
-h1,
-p {
-  margin: 0;
-}
+/* ===== 5. Tab info section ===== */
+h1, p { margin: 0; }
 
 h1 {
   color: #f3f23c;
   font-size: 28px;
   line-height: 1;
-  letter-spacing: 0;
 }
 
 .source {
@@ -194,15 +144,20 @@ h1 {
 
 label {
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
+  grid-template-columns: 48px minmax(0, 1fr);
   gap: 8px;
   align-items: center;
   font-size: 14px;
   font-weight: 750;
 }
 
-input,
-select {
+/* Add colon after label text / 标签文字后加冒号 */
+.source label > span::after,
+.save-row label > span::after {
+  content: "：";
+}
+
+input, select {
   min-width: 0;
   height: 28px;
   border: 0;
@@ -220,13 +175,9 @@ select {
   margin-top: 2px;
 }
 
-.check-row input {
-  width: 16px;
-  height: 16px;
-  padding: 0;
-}
+.check-row input { width: 16px; height: 16px; padding: 0; }
 
-/* ===== 6. 状态行与波形面板 ===== */
+/* ===== 6. Status & waveform ===== */
 .status-row {
   display: flex;
   justify-content: space-between;
@@ -236,15 +187,10 @@ select {
   font-weight: 750;
 }
 
-#clock {
-  font-variant-numeric: tabular-nums;
-}
+#clock { font-variant-numeric: tabular-nums; }
 
-.wave-panel {
-  margin-top: 12px;
-}
+.wave-panel { margin-top: 12px; }
 
-/* 音量电平条 */
 .meter {
   height: 8px;
   overflow: hidden;
@@ -261,18 +207,12 @@ select {
   transition: width 70ms linear;
 }
 
-/*
-  波形画布
-  高度从 190px 缩小到 120px，配合 JS 中的渐变色与间距优化
-  使波形更紧凑精致，减少页面空间占用
-*/
 canvas {
   display: block;
   width: 100%;
   height: 120px;
   margin-top: 10px;
   cursor: crosshair;
-  /* 圆角裁剪使画布边缘更柔和 */
   border-radius: 6px;
 }
 
@@ -284,17 +224,14 @@ canvas {
   font-weight: 700;
 }
 
-/* ===== 7. 按钮区 ===== */
-.primary-actions,
-.save-row {
+/* ===== 7. Buttons ===== */
+.primary-actions, .save-row {
   display: grid;
   gap: 10px;
   margin-top: 18px;
 }
 
-.primary-actions {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
+.primary-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 .save-row {
   grid-template-columns: 1fr 1fr 1fr;
@@ -303,9 +240,7 @@ canvas {
   border-top: 1px solid rgba(255, 255, 255, 0.65);
 }
 
-.save-row label {
-  grid-template-columns: 58px minmax(0, 1fr);
-}
+.save-row label { grid-template-columns: 48px minmax(0, 1fr); }
 
 button {
   min-height: 38px;
@@ -320,9 +255,7 @@ button {
   transition: filter 0.15s ease;
 }
 
-button:hover:not(:disabled) {
-  filter: brightness(1.08);
-}
+button:hover:not(:disabled) { filter: brightness(1.08); }
 
 button:disabled {
   color: rgba(255, 255, 255, 0.66);
@@ -330,20 +263,11 @@ button:disabled {
   cursor: not-allowed;
 }
 
-#startButton {
-  background: #b71310;
-}
+#startButton { background: #b71310; }
+#stopButton, #discardButton { background: rgba(255, 255, 255, 0.16); }
+#previewButton { background: #8f0603; }
 
-#stopButton,
-#discardButton {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-#previewButton {
-  background: #8f0603;
-}
-
-/* ===== 8. 试听音频 ===== */
+/* ===== 8. Preview audio ===== */
 #previewAudio {
   display: none;
   width: 100%;
@@ -351,32 +275,164 @@ button:disabled {
   accent-color: #9f0704;
 }
 
-#previewAudio.has-audio {
-  display: block;
+#previewAudio.has-audio { display: block; }
+
+/* ===== 9. Quick download section (v2.0.0) / 一键探测下载区 ===== */
+/*
+  This section detects media elements on the page and lets users
+  download the actual audio source files directly (not recording).
+  此区域检测页面媒体元素，直接下载源音频文件（非录音）。
+*/
+.quick-download {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
 }
 
-/* ===== 9. 响应式适配 ===== */
+.section-title {
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #fff15a;
+}
+
+/* Recording section title: add top spacing for visual balance */
+/* 录音区标题：增加上方间距，视觉更美观 */
+.section-title:first-of-type {
+  margin-top: 14px;
+}
+
+.quick-download-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.detect-btn {
+  flex: 1;
+  min-height: 42px;
+  background: #1a8a5e;
+  border-color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+}
+
+.detect-btn:hover:not(:disabled) { background: #22a674; }
+
+/* Download All button / 一键下载全部按钮 */
+.download-all-btn {
+  flex: 1;
+  min-height: 42px;
+  background: #1565c0;
+  border-color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+}
+
+.download-all-btn:hover:not(:disabled) { background: #1976d2; }
+
+/* Media list / 媒体列表 */
+.media-list {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+/*
+  Each media item is a row with icon, label/URL, and download button.
+  每个媒体项为一行：图标 + 标签/URL + 下载按钮。
+*/
+.media-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background 0.15s ease;
+  overflow: hidden;        /* prevent button overflow / 防止按钮溢出 */
+  max-width: 100%;          /* stay within container / 限制在容器内 */
+  box-sizing: border-box;   /* include padding in width / padding 计入宽度 */
+}
+
+.media-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.media-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.media-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.media-label {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-url {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Stream badge / 流媒体标识 */
+.media-stream-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+  margin-left: 6px;
+}
+
+/* Download button per media item / 每个媒体项的下载按钮 */
+.media-download-btn {
+  flex-shrink: 0;
+  min-height: 34px;
+  min-width: 42px;
+  padding: 0 10px;
+  background: #1a8a5e;
+  font-size: 16px;
+}
+
+.media-download-btn:hover:not(:disabled) { background: #22a674; }
+
+/* Status text / 状态文字 */
+.quick-status {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  min-height: 16px;
+}
+
+/* Empty state / 空状态 */
+.media-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== 10. Responsive ===== */
 @media (max-width: 560px) {
-  body {
-    min-width: 360px;
-  }
-
-  .recorder {
-    padding: 18px;
-  }
-
-  .primary-actions,
-  .save-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .save-row label,
-  label {
-    grid-column: 1 / -1;
-  }
-
-  /* 小屏幕下缩小画布高度 */
-  canvas {
-    height: 90px;
-  }
+  body { min-width: 360px; }
+  .recorder { padding: 18px; }
+  .primary-actions, .save-row { grid-template-columns: 1fr 1fr; }
+  .save-row label, label { grid-column: 1 / -1; }
+  .quick-download-actions { flex-direction: column; }
+  canvas { height: 90px; }
 }
